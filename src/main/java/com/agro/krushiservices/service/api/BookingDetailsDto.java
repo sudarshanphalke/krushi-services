@@ -3,12 +3,12 @@ package com.agro.krushiservices.service.api;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.Type;
-import org.hibernate.usertype.UserTypeLegacyBridge;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "booking_details")
 @Data
 public class BookingDetailsDto {
 
@@ -17,9 +17,13 @@ public class BookingDetailsDto {
     @Column(name = "booking_id")
     private Long bookingId;
 
-    @Type(value = UserTypeLegacyBridge.class)
-    @Column(name = "worker_details")
-    private List<WorkerDetailsDto> workerDetailsDtoList = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinTable(
+            name = "booking_worker",
+            joinColumns = @JoinColumn(name = "booking_id"),
+            inverseJoinColumns = @JoinColumn(name = "worker_id")
+    )
+    private List<WorkerDetailsDto> workerDetailsDtoList;
 
     @Column(name = "billable_amount")
     private Double billableAmount;

@@ -4,5 +4,5 @@ import com.agro.krushiservices.process.api.BookingDetails;
 
 public interface LaborersBookingService {
 
-    String bookLaborers(BookingDetails bookingDetails);
+    BookingDetailsDto bookLaborers(BookingDetails bookingDetails);
 }

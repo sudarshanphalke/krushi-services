@@ -1,6 +1,8 @@
 package com.agro.krushiservices.process.api;
 
+import com.agro.krushiservices.service.api.BookingDetailsDto;
+
 public interface KrushiServicesProcess {
 
-    String bookLaborers(BookingDetails bookingDetails);
+    BookingDetailsDto bookLaborers(BookingDetails bookingDetails);
 }

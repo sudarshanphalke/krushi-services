@@ -16,7 +16,7 @@ public class KrushiServicesProcessImpl implements KrushiServicesProcess {
     }
 
     @Override
-    public String bookLaborers(BookingDetails bookingDetails) {
+    public BookingDetailsDto bookLaborers(BookingDetails bookingDetails) {
         return laborersBookingService.bookLaborers(bookingDetails);
     }
 }

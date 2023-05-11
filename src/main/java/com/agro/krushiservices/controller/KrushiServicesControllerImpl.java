@@ -2,6 +2,7 @@ package com.agro.krushiservices.controller;
 
 import com.agro.krushiservices.process.api.BookingDetails;
 import com.agro.krushiservices.process.api.KrushiServicesProcess;
+import com.agro.krushiservices.service.api.BookingDetailsDto;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,8 +18,8 @@ public class KrushiServicesControllerImpl implements KrushiServicesController {
     }
 
     @Override
-    public ResponseEntity<String> bookLaborers(@RequestBody @Valid BookingDetails bookingDetails) {
-        String processResponse = krushiServicesProcess.bookLaborers(bookingDetails);
+    public ResponseEntity<BookingDetailsDto> bookLaborers(@RequestBody @Valid BookingDetails bookingDetails) {
+        BookingDetailsDto processResponse = krushiServicesProcess.bookLaborers(bookingDetails);
         return ResponseEntity.ok(processResponse);
     }
 }
