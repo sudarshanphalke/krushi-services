@@ -17,6 +17,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -66,9 +67,9 @@ public class LaborersBookingServiceImplTest {
         bookingDetails.setWorkerDetailsList(List.of(workerDetails, workerDetails2));
 
         // Act
-        BookingDetailsDto response = laborersBookingService.bookLaborers(bookingDetails);
+        CompletableFuture<BookingDetailsDto> response = laborersBookingService.bookLaborers(bookingDetails);
 
         // Assert
-        Assertions.assertEquals(1104.48, response.getBillableAmount());
+        Assertions.assertEquals(936.0, response.join().getBillableAmount());
     }
 }

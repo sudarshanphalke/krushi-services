@@ -2,7 +2,9 @@ package com.agro.krushiservices.service.api;
 
 import com.agro.krushiservices.process.api.BookingDetails;
 
+import java.util.concurrent.CompletableFuture;
+
 public interface LaborersBookingService {
 
-    BookingDetailsDto bookLaborers(BookingDetails bookingDetails);
+    CompletableFuture bookLaborers(BookingDetails bookingDetails);
 }

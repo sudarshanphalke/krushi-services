@@ -6,6 +6,8 @@ import com.agro.krushiservices.service.api.BookingDetailsDto;
 import com.agro.krushiservices.service.api.LaborersBookingService;
 import org.springframework.stereotype.Component;
 
+import java.util.concurrent.CompletableFuture;
+
 @Component
 public class KrushiServicesProcessImpl implements KrushiServicesProcess {
 
@@ -17,6 +19,8 @@ public class KrushiServicesProcessImpl implements KrushiServicesProcess {
 
     @Override
     public BookingDetailsDto bookLaborers(BookingDetails bookingDetails) {
-        return laborersBookingService.bookLaborers(bookingDetails);
+        CompletableFuture lbsFuture = laborersBookingService.bookLaborers(bookingDetails);
+        BookingDetailsDto processResponse = (BookingDetailsDto) lbsFuture.join();
+        return processResponse;
     }
 }
